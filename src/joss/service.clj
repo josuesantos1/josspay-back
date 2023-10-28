@@ -1,8 +1,9 @@
 (ns joss.service
-  (:require [io.pedestal.http :as http]
-            [io.pedestal.http.route :as route]
-            [io.pedestal.http.body-params :as body-params]
-            [ring.util.response :as ring-resp]))
+  (:require
+   [io.pedestal.http :as http]
+   [io.pedestal.http.body-params :as body-params]
+   [io.pedestal.http.route :as route]
+   [ring.util.response :as ring-resp]))
 
 (defn about-page
   [request]
@@ -33,7 +34,6 @@
 ;  `[[["/" {:get home-page}
 ;      ^:interceptors [(body-params/body-params) http/html-body]
 ;      ["/about" {:get about-page}]]]])
-
 
 ;; Consumed by joss.server/create-server
 ;; See http/default-interceptors for additional options you can configure

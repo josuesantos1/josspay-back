@@ -1,8 +1,9 @@
 (ns joss.service-test
-  (:require [clojure.test :refer :all]
-            [io.pedestal.test :refer :all]
-            [io.pedestal.http :as bootstrap]
-            [joss.service :as service]))
+  (:require
+   [clojure.test :refer :all]
+   [io.pedestal.http :as bootstrap]
+   [io.pedestal.test :refer :all]
+   [joss.service :as service]))
 
 (def service
   (::bootstrap/service-fn (bootstrap/create-servlet service/service)))
@@ -26,7 +27,7 @@
   (is
    (re-find #"Clojure \d+\.\d+(\.\d+)?"
             (:body (response-for service :get "/about"))))
-  
+
   (is (=
        (:headers (response-for service :get "/about"))
        {"Content-Type" "text/html;charset=UTF-8"
